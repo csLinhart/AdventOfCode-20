@@ -10,7 +10,7 @@ function D02(input)
         cm = countmap([c for c in pwd])
         r = parse.(Int, split(input[i][1], "-"))
         letter = input[i][2][1]
-        if occursin(letter, pwd) && cm[letter] >= r[1] && cm[letter] <= r[2]
+        if occursin(letter, pwd) && r[1] <= cm[letter]  <= r[2]
             count1 += 1
         end
         if xor(pwd[r[1]] == letter, pwd[r[2]] == letter)
