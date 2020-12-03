@@ -1,4 +1,4 @@
-using DelimitedFiles, Combinatorics
+using DelimitedFiles
 input = readdlm("D03.txt", String)
 
 function D03(input, r, d)
