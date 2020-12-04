@@ -1,18 +1,3 @@
 using DelimitedFiles, StatsBase
-input = readdlm("D02.txt", '\n', String)
-input = split.(input, " ")
-
-function D02(input)
-    count1 = count2 = 0
-    for line in input
-        pwd = line[3]
-        cm = countmap([c for c in pwd])
-        r = parse.(Int, split(line[1], "-"))
-        letter = line[2][1]
-        count1 += occursin(letter, pwd) && cm[letter] in r[1]:r[2] ? 1 : 0
-        count2 += xor(pwd[r[1]] == letter, pwd[r[2]] == letter) ? 1 : 0
-    end
-    (count1, count2)
-end
-
-println(D02(input))
+println(length(filter(line -> occursin(line[2][1], line[3]) && countmap([c for c in line[3]])[line[2][1]] in parse.(Int, split(line[1], "-"))[1]:parse.(Int, split(line[1], "-"))[2], split.(readdlm("D02.txt", '\n', String), " "))))
+println( length(filter(line -> xor(line[3][parse.(Int, split(line[1], "-"))[1]] == line[2][1], line[3][parse.(Int, split(line[1], "-"))[2]] == line[2][1]), split.(readdlm("D02.txt", '\n', String), " "))))
