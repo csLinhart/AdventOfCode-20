@@ -4,11 +4,11 @@ input = split.(input, " ")
 
 function D02(input)
     count1 = count2 = 0
-    for i = 1:length(input)
-        pwd = input[i][3]
+    for line in input
+        pwd = line[3]
         cm = countmap([c for c in pwd])
-        r = parse.(Int, split(input[i][1], "-"))
-        letter = input[i][2][1]
+        r = parse.(Int, split(line[1], "-"))
+        letter = line[2][1]
         count1 += occursin(letter, pwd) && cm[letter] in r[1]:r[2] ? 1 : 0
         count2 += xor(pwd[r[1]] == letter, pwd[r[2]] == letter) ? 1 : 0
     end
