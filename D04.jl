@@ -21,16 +21,16 @@ function D04(lines)
 
         for e in l
             if e[1:3] == "byr"
-                cc += 1920 <=  parse(Int, e[5:end]) <= 2002 ? 1 : 0
+                cc += parse(Int, e[5:end]) in 1920:2002 ? 1 : 0
             elseif e[1:3] == "iyr"
-                cc += 2010 <= parse(Int, e[5:end]) <= 2020 ? 1 : 0
+                cc += parse(Int, e[5:end]) in 2010:2020 ? 1 : 0
             elseif e[1:3] == "eyr"
-                cc += 2020 <= parse(Int, e[5:end]) <= 2030 ? 1 : 0
+                cc += 2020 <= parse(Int, e[5:end]) in 2020:2030 ? 1 : 0
             elseif e[1:3] == "hgt"
                 if e[end - 1:end] == "cm"
-                    cc += 150 <= parse(Int, e[5:end - 2]) <= 193 ? 1 : 0
+                    cc +=  parse(Int, e[5:end - 2]) in 150:193 ? 1 : 0
                 elseif e[end - 1:end] == "in"
-                    cc += 59 <= parse(Int, e[5:end - 2]) <= 76 ? 1 : 0
+                    cc += parse(Int, e[5:end - 2]) in 59:76 ? 1 : 0
                 end
             elseif e[1:3] == "hcl"
                 cc += e[5] == '#' && length(e[6:end]) == 6 && length(filter(x -> x in vcat('0':'9', 'a':'f'), e[6:end])) == 6  ? 1 : 0
