@@ -1,5 +1,4 @@
-input = open("D04.txt")
-lines = readlines(input)
+lines = readlines("D04.txt")
 lines = vcat(lines, "")
 
 function D04(lines)
