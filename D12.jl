@@ -4,8 +4,8 @@ input = readdlm("D12.txt", '\n', String)
 function D12(input)
     dir = [0,1]
     pos1 = pos2 = [0,0]
-    nsew = Dict('N' => [1,0],'S' => [-1,0],'E' => [0,1],'W' => [0,-1])
-    rot(n) = Dict('R' => [cosd(n) -sind(n); sind(n) cosd(n)],'L' => [cosd(n) sind(n); -sind(n) cosd(n)])
+    nsew = Dict('N' => [1,0], 'S' => [-1,0], 'E' => [0,1], 'W' => [0,-1])
+    rot(n) = Dict('R' => [cosd(n) -sind(n); sind(n) cosd(n)], 'L' => [cosd(n) sind(n); -sind(n) cosd(n)])
     wp = [1, 10]
     for line in input
         a = line[1]
