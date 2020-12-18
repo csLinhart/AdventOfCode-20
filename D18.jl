@@ -5,7 +5,7 @@ input = readdlm("D18.txt", '\n', String)
 +₁(a, b) = a * b
 
 function D18(input)
-    sum1 = sum2 =0
+    sum1 = sum2 = 0
     for line in input
         sl1 = split(line, "")
         sl1[sl1 .== "+"] .= "*₁"
